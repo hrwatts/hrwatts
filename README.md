@@ -20,13 +20,12 @@ Original research implementations in probabilistic modeling, inference methods, 
 
 ---
 
+### 🔢 **Logistic Regression & Machine Learning Theory**
+Deep dive implementations of foundational machine learning algorithms with emphasis on mathematical correctness and interpretability. Original research into statistical properties of logistic regression and related estimation methods.
 
-### ⚡ **High-Performance Computing & Numerical Algorithms**
-Efficient C++ implementations of core algorithms and data structures for computationally intensive statistical and dynamical systems problems. Includes performance-critical components for solving partial differential equations, stochastic differential equations, and large-scale numerical simulations.
-
-- **Repo**: [C-Projects](https://github.com/hrwatts/C-Projects)
-- **Tech**: C++, numerical algorithms, computational efficiency
-- **Focus**: Performance optimization for scientific computing
+- **Tech**: MATLAB, Python, theoretical analysis
+- **Focus**: Mathematical foundations of machine learning, parameter estimation, statistical inference
+- **Application**: Classification methods, probabilistic modeling, risk assessment
 
 ---
 
@@ -36,15 +35,6 @@ MATLAB implementations of mathematical models and numerical methods, including s
 - **Repo**: [MATLAB_projects](https://github.com/hrwatts/MATLAB_projects)
 - **Tech**: MATLAB, differential equations, numerical analysis
 - **Focus**: Dynamical systems simulation and analysis
-
----
-
-### 🔢 **Logistic Regression & Machine Learning Theory**
-Deep dive implementations of foundational machine learning algorithms with emphasis on mathematical correctness and interpretability. Original research into statistical properties of logistic regression and related estimation methods.
-
-- **Tech**: MATLAB, Python, theoretical analysis
-- **Focus**: Mathematical foundations of machine learning, parameter estimation, statistical inference
-- **Application**: Classification methods, probabilistic modeling, risk assessment
 
 ---
 
