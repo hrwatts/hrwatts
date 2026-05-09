@@ -1,13 +1,28 @@
-# Harrison Watts
+<h1 align="center">Harrison Watts</h1>
 
-Applied probability, stochastic systems, and statistical computing.
+<p align="center"><strong>Applied probability, stochastic systems, and statistical computing.</strong></p>
 
-![Stochastic Processes](https://img.shields.io/badge/Stochastic%20Processes-1f2937?style=flat-square)
-![Dynamical Systems](https://img.shields.io/badge/Dynamical%20Systems-334155?style=flat-square)
-![Applied Probability](https://img.shields.io/badge/Applied%20Probability-475569?style=flat-square)
-![Statistical Computing](https://img.shields.io/badge/Statistical%20Computing-0f766e?style=flat-square)
+<p align="center">
+  <a href="https://scholar.google.com/citations?user=ieEEv8kAAAAJ&hl=en">
+    <img src="https://img.shields.io/badge/Google_Scholar-Profile-4285F4?style=flat-square&logo=googlescholar&logoColor=white" alt="Google Scholar" />
+  </a>
+  <a href="https://github.com/hrwatts">
+    <img src="https://img.shields.io/badge/GitHub-hrwatts-181717?style=flat-square&logo=github&logoColor=white" alt="GitHub" />
+  </a>
+  <a href="https://www.ua.edu/">
+    <img src="https://img.shields.io/badge/University_of_Alabama-Research-A6192E?style=flat-square" alt="University of Alabama" />
+  </a>
+  <a href="https://github.com/hrwatts/hrwatts/actions/workflows/update-profile.yml">
+    <img src="https://github.com/hrwatts/hrwatts/actions/workflows/update-profile.yml/badge.svg" alt="Update Profile Workflow" />
+  </a>
+</p>
 
-[Google Scholar](https://scholar.google.com/citations?user=ieEEv8kAAAAJ&hl=en) | [GitHub](https://github.com/hrwatts) | University of Alabama
+<p align="center">
+  <img src="https://img.shields.io/badge/Stochastic_Processes-1f2937?style=flat-square" alt="Stochastic Processes" />
+  <img src="https://img.shields.io/badge/Dynamical_Systems-334155?style=flat-square" alt="Dynamical Systems" />
+  <img src="https://img.shields.io/badge/Applied_Probability-475569?style=flat-square" alt="Applied Probability" />
+  <img src="https://img.shields.io/badge/Statistical_Computing-0f766e?style=flat-square" alt="Statistical Computing" />
+</p>
 
 Research spans stochastic processes, dynamical systems, inference, and scientific computing, with an emphasis on mathematically grounded implementations.
 
@@ -27,7 +42,7 @@ Research spans stochastic processes, dynamical systems, inference, and scientifi
 ## GitHub Snapshot
 
 <!-- AUTO-GENERATED: github-readme-stats card -->
-<p>
+<p align="center">
   <img src="https://github-readme-stats.vercel.app/api?username=hrwatts&show_icons=true&theme=transparent&hide_border=true&count_private=false" alt="GitHub Stats" width="54%" />
   <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=hrwatts&layout=compact&theme=transparent&hide_border=true&langs_count=8" alt="Top Languages" width="41%" />
 </p>
@@ -37,7 +52,3 @@ Research spans stochastic processes, dynamical systems, inference, and scientifi
 <!-- START_METRICS -->
 *Auto-generated metrics appear here.*
 <!-- END_METRICS -->
-
-## Selected Public Work
-
-- [MATLAB_projects](https://github.com/hrwatts/MATLAB_projects) - MATLAB-based numerical methods, ODE/PDE experiments, and dynamical systems visualizations
