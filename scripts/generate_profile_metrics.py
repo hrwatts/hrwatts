@@ -51,6 +51,14 @@ FRAMEWORK_KEYWORDS = {
     "scipy": ["scipy"],
 }
 
+FRAMEWORK_DISPLAY = [
+    ("tensorflow", "TensorFlow"),
+    ("pytorch", "PyTorch"),
+    ("numpy", "NumPy"),
+    ("scipy", "SciPy"),
+    ("matlab", "MATLAB"),
+]
+
 
 def get_user_repos(gh: Github) -> List:
     """Fetch all public repositories for the user."""
@@ -95,14 +103,7 @@ def categorize_repos(repos: List) -> Dict[str, List]:
 
 def extract_frameworks(repos: List) -> Dict[str, int]:
     """Extract framework usage from repository descriptions/names."""
-    frameworks = {
-        "tensorflow": 0,
-        "pytorch": 0,
-        "scikit": 0,
-        "pandas": 0,
-        "numpy": 0,
-        "matlab": 0,
-    }
+    frameworks = {framework: 0 for framework in FRAMEWORK_KEYWORDS}
 
     for repo in repos:
         name_lower = repo.name.lower()
@@ -167,6 +168,14 @@ def format_metrics_markdown(stats: Dict, frameworks: Dict) -> str:
     """Format metrics as Markdown for injection into README."""
     repo_stats = stats["repositories_by_research_area"]
     star_stats = stats["stars_by_research_area"]
+    framework_lines = "\n".join(
+        f"- {label}: {frameworks.get(key, 0)} projects"
+        for key, label in FRAMEWORK_DISPLAY
+    )
+    language_lines = "\n".join(
+        f"- **{entry['name']}**: {entry['bytes']:,} bytes"
+        for entry in stats["top_languages"]
+    )
 
     markdown = f"""
 ### 📊 Research Portfolio Breakdown
@@ -180,14 +189,10 @@ def format_metrics_markdown(stats: Dict, frameworks: Dict) -> str:
 **Total**: {stats['total_repositories']} public repos • {stats['total_stars']} stars • {stats['total_forks']} forks
 
 ### 🔧 Framework & Library Usage
-- TensorFlow: {frameworks['tensorflow']} projects
-- PyTorch: {frameworks['pytorch']} projects
-- NumPy: {frameworks['numpy']} projects
-- SciPy: {frameworks['scipy']} projects
-- MATLAB: {frameworks['matlab']} projects
+{framework_lines}
 
 ### 💻 Primary Languages
-{chr(10).join(f"- **{lang}**: {bytes_count:,} bytes" for lang, bytes_count in stats['top_languages'])}
+{language_lines}
 
 *Last updated: {datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S UTC')}*
 """
