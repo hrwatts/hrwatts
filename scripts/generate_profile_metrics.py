@@ -1,34 +1,45 @@
 #!/usr/bin/env python3
 """
-Generate custom GitHub profile metrics for trading/ML specialization.
-Uses PyGithub to fetch GitHub data and generate domain-specific signals.
-Designed to be run by GitHub Actions and inject metrics into profile README.
+Generate profile snapshot and metrics for the GitHub profile README.
+Designed to run in GitHub Actions and inject auto-generated sections into README.md.
 """
 
-import os
 import json
+import os
 from datetime import datetime
-from typing import Dict, List, Tuple
 from pathlib import Path
+from typing import Dict, List
 
 try:
     from github import Auth, Github
 except ImportError:
-    print("ERROR: PyGithub not installed. Run: pip install PyGithub")
-    exit(1)
+    print("ERROR: PyGithub not installed. Run: pip install -r requirements.txt")
+    raise SystemExit(1)
 
 
-# Configuration
 GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN")
 if not GITHUB_TOKEN:
     print("ERROR: GITHUB_TOKEN environment variable not set")
-    exit(1)
+    raise SystemExit(1)
 
 USERNAME = "hrwatts"
 PROFILE_README = Path(__file__).parent.parent / "README.md"
 METRICS_OUTPUT = Path(__file__).parent.parent / "metrics.json"
 
-# Domain categorization
+SUMMARY_START = "<!-- START_SUMMARY -->"
+SUMMARY_END = "<!-- END_SUMMARY -->"
+METRICS_START = "<!-- START_METRICS -->"
+METRICS_END = "<!-- END_METRICS -->"
+
+CATEGORY_LABELS = {
+    "stochastic": "Stochastic processes",
+    "dynamical": "Dynamical systems",
+    "probability": "Applied probability",
+    "computing": "Statistical computing",
+    "finance": "Quantitative finance",
+    "other": "Other projects",
+}
+
 ACADEMIC_KEYWORDS = {
     "stochastic": ["stochastic", "brownian", "martingale", "markov", "poisson", "levy"],
     "dynamical": ["dynamical", "differential", "ode", "pde", "dynamics", "bifurcation"],
@@ -37,72 +48,58 @@ ACADEMIC_KEYWORDS = {
     "finance": ["trade", "algorithmic", "backtest", "quant", "forex", "stock", "portfolio", "risk"],
 }
 
-# Additional keywords for academic papers/theory
-RESEARCH_LEVEL_KEYWORDS = {
-    "theoretical": ["theory", "theorem", "mathematical", "rigorous", "proof", "analysis"],
-    "applied": ["application", "empirical", "experiment", "data", "implementation"],
-}
-
 FRAMEWORK_KEYWORDS = {
     "tensorflow": ["tensorflow", "tf"],
     "pytorch": ["pytorch", "torch"],
-    "matlab": ["matlab"],
     "numpy": ["numpy"],
     "scipy": ["scipy"],
+    "matlab": ["matlab"],
 }
 
 
+def now_utc() -> datetime:
+    return datetime.utcnow()
+
+
 def get_user_repos(gh: Github) -> List:
-    """Fetch all public repositories for the user."""
+    """Fetch all public repositories for the configured user."""
     try:
         user = gh.get_user(USERNAME)
         repos = list(user.get_repos(sort="updated", direction="desc"))
-        print(f"✓ Fetched {len(repos)} repositories")
+        print(f"Fetched {len(repos)} repositories")
         return repos
-    except Exception as e:
-        print(f"ERROR fetching repos: {e}")
+    except Exception as exc:
+        print(f"ERROR fetching repositories: {exc}")
         return []
 
 
+def repo_sort_key(repo) -> tuple:
+    updated_ts = repo.updated_at.timestamp() if repo.updated_at else 0
+    return (repo.stargazers_count, updated_ts)
+
+
 def categorize_repos(repos: List) -> Dict[str, List]:
-    """Categorize repos by academic research area."""
-    categorized = {
-        "stochastic": [],
-        "dynamical": [],
-        "probability": [],
-        "computing": [],
-        "finance": [],
-        "other": [],
-    }
+    """Categorize repositories by research area."""
+    categorized = {key: [] for key in CATEGORY_LABELS}
 
     for repo in repos:
         name_lower = repo.name.lower()
         description = (repo.description or "").lower()
         full_text = f"{name_lower} {description}"
 
-        categorized_flag = False
         for category, keywords in ACADEMIC_KEYWORDS.items():
-            if any(kw in full_text for kw in keywords):
+            if any(keyword in full_text for keyword in keywords):
                 categorized[category].append(repo)
-                categorized_flag = True
                 break
-
-        if not categorized_flag:
+        else:
             categorized["other"].append(repo)
 
     return categorized
 
 
 def extract_frameworks(repos: List) -> Dict[str, int]:
-    """Extract framework usage from repository descriptions/names."""
-    frameworks = {
-        "tensorflow": 0,
-        "pytorch": 0,
-        "scikit": 0,
-        "pandas": 0,
-        "numpy": 0,
-        "matlab": 0,
-    }
+    """Extract framework usage from repository descriptions and names."""
+    frameworks = {name: 0 for name in FRAMEWORK_KEYWORDS}
 
     for repo in repos:
         name_lower = repo.name.lower()
@@ -110,177 +107,189 @@ def extract_frameworks(repos: List) -> Dict[str, int]:
         full_text = f"{name_lower} {description}"
 
         for framework, keywords in FRAMEWORK_KEYWORDS.items():
-            if any(kw in full_text for kw in keywords):
+            if any(keyword in full_text for keyword in keywords):
                 frameworks[framework] += 1
 
     return frameworks
 
 
-def calculate_stats(repos: List, categorized: Dict) -> Dict:
-    """Calculate aggregate statistics by research area."""
+def calculate_stats(repos: List, categorized: Dict[str, List]) -> Dict:
+    """Calculate aggregate repository statistics."""
     total_stars = sum(repo.stargazers_count for repo in repos)
     total_forks = sum(repo.forks_count for repo in repos)
-    
-    stochastic_stars = sum(repo.stargazers_count for repo in categorized["stochastic"])
-    dynamical_stars = sum(repo.stargazers_count for repo in categorized["dynamical"])
-    probability_stars = sum(repo.stargazers_count for repo in categorized["probability"])
-    computing_stars = sum(repo.stargazers_count for repo in categorized["computing"])
-    finance_stars = sum(repo.stargazers_count for repo in categorized["finance"])
 
-    languages = {}
+    languages: Dict[str, int] = {}
     for repo in repos:
         try:
-            lang_dict = repo.get_languages()
-            for lang, bytes_count in lang_dict.items():
-                languages[lang] = languages.get(lang, 0) + bytes_count
+            for language, byte_count in repo.get_languages().items():
+                languages[language] = languages.get(language, 0) + byte_count
         except Exception:
-            pass  # Skip if language data unavailable
+            continue
 
-    top_languages = sorted(languages.items(), key=lambda x: x[1], reverse=True)[:5]
+    top_languages = sorted(languages.items(), key=lambda item: item[1], reverse=True)[:5]
 
     return {
         "total_repositories": len(repos),
         "total_stars": total_stars,
         "total_forks": total_forks,
         "repositories_by_research_area": {
-            "stochastic_processes": len(categorized["stochastic"]),
-            "dynamical_systems": len(categorized["dynamical"]),
-            "applied_probability": len(categorized["probability"]),
-            "statistical_computing": len(categorized["computing"]),
-            "quantitative_finance": len(categorized["finance"]),
-            "other": len(categorized["other"]),
+            key: len(category_repos) for key, category_repos in categorized.items()
         },
         "stars_by_research_area": {
-            "stochastic_processes": stochastic_stars,
-            "dynamical_systems": dynamical_stars,
-            "applied_probability": probability_stars,
-            "statistical_computing": computing_stars,
-            "quantitative_finance": finance_stars,
-            "other": sum(repo.stargazers_count for repo in categorized["other"]),
+            key: sum(repo.stargazers_count for repo in category_repos)
+            for key, category_repos in categorized.items()
         },
-        "top_languages": [{"name": lang, "bytes": bytes_count} for lang, bytes_count in top_languages],
-        "generated_at": datetime.utcnow().isoformat() + "Z",
+        "top_languages": [
+            {"name": language, "bytes": byte_count}
+            for language, byte_count in top_languages
+        ],
+        "generated_at": now_utc().isoformat() + "Z",
     }
 
 
-def format_metrics_markdown(stats: Dict, frameworks: Dict) -> str:
-    """Format metrics as Markdown for injection into README."""
+def select_featured_repos(repos: List, categorized: Dict[str, List], limit: int = 5) -> List:
+    """Pick a small set of repositories that represents the portfolio."""
+    featured: List = []
+    seen = set()
+
+    for category in ("stochastic", "dynamical", "probability", "computing", "finance"):
+        ranked = sorted(categorized[category], key=repo_sort_key, reverse=True)
+        for repo in ranked:
+            if repo.name not in seen:
+                featured.append(repo)
+                seen.add(repo.name)
+                break
+        if len(featured) >= limit:
+            return featured[:limit]
+
+    for repo in sorted(repos, key=repo_sort_key, reverse=True):
+        if repo.name not in seen:
+            featured.append(repo)
+            seen.add(repo.name)
+        if len(featured) >= limit:
+            break
+
+    return featured[:limit]
+
+
+def format_portfolio_summary(stats: Dict, repos: List, categorized: Dict[str, List]) -> str:
+    """Format a concise portfolio snapshot for README injection."""
+    generated = now_utc().strftime("%Y-%m-%d %H:%M:%S UTC")
+    primary_languages = ", ".join(lang["name"] for lang in stats["top_languages"][:3]) or "N/A"
+    recent_repos = ", ".join(f"`{repo.name}`" for repo in repos[:3]) or "N/A"
+    featured_repos = select_featured_repos(repos, categorized)
+
+    lines = [
+        f"- Public repositories: {stats['total_repositories']}",
+        f"- Total stars and forks: {stats['total_stars']} stars, {stats['total_forks']} forks",
+        f"- Primary languages: {primary_languages}",
+        f"- Recently updated: {recent_repos}",
+        "",
+        "### Featured Repositories",
+    ]
+
+    for repo in featured_repos:
+        description = repo.description or "No description provided."
+        lines.append(f"- [{repo.name}]({repo.html_url}) - {description}")
+
+    lines.append("")
+    lines.append(f"*Last updated: {generated}*")
+    return "\n".join(lines)
+
+
+def format_metrics_markdown(stats: Dict, frameworks: Dict[str, int]) -> str:
+    """Format daily metrics as Markdown for README injection."""
     repo_stats = stats["repositories_by_research_area"]
     star_stats = stats["stars_by_research_area"]
+    generated = now_utc().strftime("%Y-%m-%d %H:%M:%S UTC")
 
-    markdown = f"""
-### 📊 Research Portfolio Breakdown
-- **Stochastic Processes**: {repo_stats['stochastic_processes']} repos ({star_stats['stochastic_processes']} ⭐)
-- **Dynamical Systems**: {repo_stats['dynamical_systems']} repos ({star_stats['dynamical_systems']} ⭐)
-- **Applied Probability**: {repo_stats['applied_probability']} repos ({star_stats['applied_probability']} ⭐)
-- **Statistical Computing**: {repo_stats['statistical_computing']} repos ({star_stats['statistical_computing']} ⭐)
-- **Quantitative Finance Applications**: {repo_stats['quantitative_finance']} repos ({star_stats['quantitative_finance']} ⭐)
-- **Other Projects**: {repo_stats['other']} repos ({star_stats['other']} ⭐)
-
-**Total**: {stats['total_repositories']} public repos • {stats['total_stars']} stars • {stats['total_forks']} forks
-
-### 🔧 Framework & Library Usage
-- TensorFlow: {frameworks['tensorflow']} projects
-- PyTorch: {frameworks['pytorch']} projects
-- NumPy: {frameworks['numpy']} projects
-- SciPy: {frameworks['scipy']} projects
-- MATLAB: {frameworks['matlab']} projects
-
-### 💻 Primary Languages
-{chr(10).join(f"- **{lang}**: {bytes_count:,} bytes" for lang, bytes_count in stats['top_languages'])}
-
-*Last updated: {datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S UTC')}*
-"""
-    return markdown.strip()
-
-
-def inject_metrics_into_readme(readme_path: Path, metrics_markdown: str) -> bool:
-    """Inject formatted metrics into README between markers."""
-    try:
-        with open(readme_path, "r", encoding="utf-8") as f:
-            content = f.read()
-
-        # Find markers
-        start_marker = "<!-- START_METRICS -->"
-        end_marker = "<!-- END_METRICS -->"
-
-        if start_marker not in content or end_marker not in content:
-            print(f"WARNING: Metrics markers not found in {readme_path}")
-            return False
-
-        # Replace content between markers
-        start_idx = content.find(start_marker) + len(start_marker)
-        end_idx = content.find(end_marker)
-
-        updated_content = (
-            content[:start_idx]
-            + "\n" + metrics_markdown + "\n"
-            + content[end_idx:]
+    lines = ["### Research Area Breakdown"]
+    for key in ("stochastic", "dynamical", "probability", "computing", "finance", "other"):
+        lines.append(
+            f"- {CATEGORY_LABELS[key]}: {repo_stats[key]} repos ({star_stats[key]} stars)"
         )
 
-        with open(readme_path, "w", encoding="utf-8") as f:
-            f.write(updated_content)
+    lines.extend(
+        [
+            "",
+            "### Framework Usage",
+            f"- TensorFlow: {frameworks['tensorflow']} projects",
+            f"- PyTorch: {frameworks['pytorch']} projects",
+            f"- NumPy: {frameworks['numpy']} projects",
+            f"- SciPy: {frameworks['scipy']} projects",
+            f"- MATLAB: {frameworks['matlab']} projects",
+            "",
+            "### Primary Languages",
+        ]
+    )
 
-        print(f"✓ Metrics injected into {readme_path}")
+    for language in stats["top_languages"]:
+        lines.append(f"- {language['name']}: {language['bytes']:,} bytes")
+
+    lines.append("")
+    lines.append(f"*Last updated: {generated}*")
+    return "\n".join(lines)
+
+
+def inject_section(readme_path: Path, start_marker: str, end_marker: str, body: str) -> bool:
+    """Replace a marker-delimited section in the README."""
+    try:
+        content = readme_path.read_text(encoding="utf-8")
+        if start_marker not in content or end_marker not in content:
+            print(f"WARNING: Markers not found: {start_marker} ... {end_marker}")
+            return False
+
+        start_idx = content.find(start_marker) + len(start_marker)
+        end_idx = content.find(end_marker)
+        updated_content = content[:start_idx] + "\n" + body + "\n" + content[end_idx:]
+        readme_path.write_text(updated_content, encoding="utf-8")
         return True
-
-    except Exception as e:
-        print(f"ERROR injecting metrics: {e}")
+    except Exception as exc:
+        print(f"ERROR injecting README section: {exc}")
         return False
 
 
 def save_metrics_json(stats: Dict) -> bool:
-    """Save raw metrics as JSON for reference."""
+    """Persist raw metrics for inspection and workflow commits."""
     try:
-        with open(METRICS_OUTPUT, "w", encoding="utf-8") as f:
-            json.dump(stats, f, indent=2)
-        print(f"✓ Metrics saved to {METRICS_OUTPUT}")
+        METRICS_OUTPUT.write_text(json.dumps(stats, indent=2), encoding="utf-8")
+        print(f"Saved metrics to {METRICS_OUTPUT}")
         return True
-    except Exception as e:
-        print(f"ERROR saving metrics JSON: {e}")
+    except Exception as exc:
+        print(f"ERROR saving metrics JSON: {exc}")
         return False
 
 
-def main():
-    """Main execution flow."""
-    print(f"🚀 Generating profile metrics for @{USERNAME}")
-    print(f"Generated: {datetime.utcnow().isoformat()}Z\n")
+def main() -> bool:
+    """Generate the README snapshot and metrics sections."""
+    print(f"Generating profile snapshot for @{USERNAME}")
+    print(f"Generated at: {now_utc().isoformat()}Z")
 
-    # Authenticate and fetch repos
     auth = Auth.Token(GITHUB_TOKEN)
     gh = Github(auth=auth)
     repos = get_user_repos(gh)
-
     if not repos:
-        print("ERROR: No repositories found")
+        print("ERROR: no repositories found")
         return False
 
-    # Categorize and analyze
     categorized = categorize_repos(repos)
     frameworks = extract_frameworks(repos)
     stats = calculate_stats(repos, categorized)
 
-    print("\n📊 Metrics Summary:")
-    print(f"  Stochastic: {stats['repositories_by_research_area']['stochastic_processes']} repos ({stats['stars_by_research_area']['stochastic_processes']} ⭐)")
-    print(f"  Dynamical: {stats['repositories_by_research_area']['dynamical_systems']} repos ({stats['stars_by_research_area']['dynamical_systems']} ⭐)")
-    print(f"  Probability: {stats['repositories_by_research_area']['applied_probability']} repos ({stats['stars_by_research_area']['applied_probability']} ⭐)")
-    print(f"  Computing: {stats['repositories_by_research_area']['statistical_computing']} repos ({stats['stars_by_research_area']['statistical_computing']} ⭐)")
-    print(f"  Finance: {stats['repositories_by_research_area']['quantitative_finance']} repos ({stats['stars_by_research_area']['quantitative_finance']} ⭐)")
-    print(f"  Top Language: {stats['top_languages'][0]['name'] if stats['top_languages'] else 'N/A'}")
-
-    # Generate and inject metrics
+    summary_markdown = format_portfolio_summary(stats, repos, categorized)
     metrics_markdown = format_metrics_markdown(stats, frameworks)
-    inject_ok = inject_metrics_into_readme(PROFILE_README, metrics_markdown)
-    save_ok = save_metrics_json(stats)
 
-    if inject_ok and save_ok:
-        print("\n✅ Profile metrics generation complete!")
+    summary_ok = inject_section(PROFILE_README, SUMMARY_START, SUMMARY_END, summary_markdown)
+    metrics_ok = inject_section(PROFILE_README, METRICS_START, METRICS_END, metrics_markdown)
+    json_ok = save_metrics_json(stats)
+
+    if summary_ok and metrics_ok and json_ok:
+        print("Profile snapshot generation complete")
         return True
-    else:
-        print("\n❌ Metrics generation failed")
-        return False
+
+    print("Profile snapshot generation failed")
+    return False
 
 
 if __name__ == "__main__":
-    success = main()
-    exit(0 if success else 1)
+    raise SystemExit(0 if main() else 1)
