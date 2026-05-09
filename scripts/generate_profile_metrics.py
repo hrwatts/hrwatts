@@ -8,7 +8,7 @@ import json
 import os
 from datetime import datetime
 from pathlib import Path
-from typing import Dict, List
+from typing import Dict, List, Tuple
 
 try:
     from github import Auth, Github
@@ -16,16 +16,15 @@ except ImportError:
     print("ERROR: PyGithub not installed. Run: pip install -r requirements.txt")
     raise SystemExit(1)
 
-
-GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN")
-if not GITHUB_TOKEN:
-    print("ERROR: GITHUB_TOKEN environment variable not set")
-    raise SystemExit(1)
-
 USERNAME = "hrwatts"
+TRACKED_OWNERS = ("hrwatts", "hrwdata")
+TRACKED_ORGS = ("hrwdata",)
+EXCLUDED_REPOSITORIES = {USERNAME}
 PROFILE_README = Path(__file__).parent.parent / "README.md"
 METRICS_OUTPUT = Path(__file__).parent.parent / "metrics.json"
 
+SNAPSHOT_START = "<!-- START_SNAPSHOT -->"
+SNAPSHOT_END = "<!-- END_SNAPSHOT -->"
 SUMMARY_START = "<!-- START_SUMMARY -->"
 SUMMARY_END = "<!-- END_SUMMARY -->"
 METRICS_START = "<!-- START_METRICS -->"
@@ -69,21 +68,61 @@ def now_utc() -> datetime:
     return datetime.utcnow()
 
 
-def get_user_repos(gh: Github) -> List:
-    """Fetch all public repositories for the configured user."""
+def is_tracked_repo(repo) -> bool:
+    """Return True when the repository should appear in the public profile."""
+    owner_login = getattr(getattr(repo, "owner", None), "login", "").lower()
+    repo_name = getattr(repo, "name", "").lower()
+    is_fork = bool(getattr(repo, "fork", False))
+    is_private = bool(getattr(repo, "private", False))
+
+    return (
+        owner_login in TRACKED_OWNERS
+        and repo_name not in EXCLUDED_REPOSITORIES
+        and not is_fork
+        and not is_private
+    )
+
+
+def get_account_repos(gh: Github, account_name: str, is_org: bool) -> List:
+    """Fetch public repositories for a user or organization account."""
     try:
-        user = gh.get_user(USERNAME)
-        repos = list(user.get_repos(sort="updated", direction="desc"))
-        print(f"Fetched {len(repos)} repositories")
+        account = gh.get_organization(account_name) if is_org else gh.get_user(account_name)
+        repos = list(account.get_repos(type="public", sort="updated", direction="desc"))
+        print(f"Fetched {len(repos)} repositories from {account_name}")
         return repos
     except Exception as exc:
-        print(f"ERROR fetching repositories: {exc}")
+        print(f"ERROR fetching repositories for {account_name}: {exc}")
         return []
 
 
+def get_tracked_repos(gh: Github) -> List:
+    """Fetch and filter repositories that should appear on the profile."""
+    all_repos = []
+    seen = set()
+
+    account_specs: Tuple[Tuple[str, bool], ...] = (
+        (USERNAME, False),
+        *((org_name, True) for org_name in TRACKED_ORGS),
+    )
+
+    for account_name, is_org in account_specs:
+        for repo in get_account_repos(gh, account_name, is_org):
+            if not is_tracked_repo(repo):
+                continue
+            if repo.full_name in seen:
+                continue
+            seen.add(repo.full_name)
+            all_repos.append(repo)
+
+    all_repos.sort(key=lambda repo: repo.updated_at or datetime.min, reverse=True)
+    print(f"Tracking {len(all_repos)} repositories after filtering")
+    return all_repos
+
+
 def repo_sort_key(repo) -> tuple:
+    has_description = bool((repo.description or "").strip())
     updated_ts = repo.updated_at.timestamp() if repo.updated_at else 0
-    return (repo.stargazers_count, updated_ts)
+    return (has_description, repo.stargazers_count, updated_ts)
 
 
 def categorize_repos(repos: List) -> Dict[str, List]:
@@ -137,6 +176,8 @@ def calculate_stats(repos: List, categorized: Dict[str, List]) -> Dict:
     top_languages = sorted(languages.items(), key=lambda item: item[1], reverse=True)[:5]
 
     return {
+        "tracked_owners": list(TRACKED_OWNERS),
+        "excluded_repositories": sorted(EXCLUDED_REPOSITORIES),
         "total_repositories": len(repos),
         "total_stars": total_stars,
         "total_forks": total_forks,
@@ -184,10 +225,11 @@ def format_portfolio_summary(stats: Dict, repos: List, categorized: Dict[str, Li
     """Format a concise portfolio snapshot for README injection."""
     generated = now_utc().strftime("%Y-%m-%d %H:%M:%S UTC")
     primary_languages = ", ".join(lang["name"] for lang in stats["top_languages"][:3]) or "N/A"
-    recent_repos = ", ".join(f"`{repo.name}`" for repo in repos[:3]) or "N/A"
+    recent_repos = ", ".join(f"`{repo.full_name}`" for repo in repos[:3]) or "N/A"
     featured_repos = select_featured_repos(repos, categorized)
 
     lines = [
+        "- Tracking public, non-fork repositories owned by `hrwatts` and `hrwdata`",
         f"- Public repositories: {stats['total_repositories']}",
         f"- Total stars and forks: {stats['total_stars']} stars, {stats['total_forks']} forks",
         f"- Primary languages: {primary_languages}",
@@ -198,7 +240,43 @@ def format_portfolio_summary(stats: Dict, repos: List, categorized: Dict[str, Li
 
     for repo in featured_repos:
         description = repo.description or "No description provided."
-        lines.append(f"- [{repo.name}]({repo.html_url}) - {description}")
+        lines.append(f"- [{repo.full_name}]({repo.html_url}) - {description}")
+
+    lines.append("")
+    lines.append(f"*Last updated: {generated}*")
+    return "\n".join(lines)
+
+
+def format_snapshot_markdown(stats: Dict, repos: List) -> str:
+    """Format a reliable in-README replacement for external stats cards."""
+    generated = now_utc().strftime("%Y-%m-%d %H:%M:%S UTC")
+    top_languages = stats["top_languages"] or []
+
+    lines = [
+        "### Profile Stats",
+        "- Tracking public, non-fork repositories owned by `hrwatts` and `hrwdata`",
+        "- Excludes the `hrwatts` profile repository",
+        f"- Public repositories counted: {stats['total_repositories']}",
+        f"- Total stars: {stats['total_stars']}",
+        f"- Total forks: {stats['total_forks']}",
+        "",
+        "### Top Languages",
+    ]
+
+    if top_languages:
+        for language in top_languages:
+            lines.append(f"- {language['name']}: {language['bytes']:,} bytes")
+    else:
+        lines.append("- No language data available")
+
+    if repos:
+        lines.extend(
+            [
+                "",
+                "### Recently Updated",
+                *[f"- `{repo.full_name}`" for repo in repos[:5]],
+            ]
+        )
 
     lines.append("")
     lines.append(f"*Last updated: {generated}*")
@@ -273,9 +351,14 @@ def main() -> bool:
     print(f"Generating profile snapshot for @{USERNAME}")
     print(f"Generated at: {now_utc().isoformat()}Z")
 
-    auth = Auth.Token(GITHUB_TOKEN)
+    github_token = os.environ.get("GITHUB_TOKEN")
+    if not github_token:
+        print("ERROR: GITHUB_TOKEN environment variable not set")
+        return False
+
+    auth = Auth.Token(github_token)
     gh = Github(auth=auth)
-    repos = get_user_repos(gh)
+    repos = get_tracked_repos(gh)
     if not repos:
         print("ERROR: no repositories found")
         return False
@@ -284,14 +367,16 @@ def main() -> bool:
     frameworks = extract_frameworks(repos)
     stats = calculate_stats(repos, categorized)
 
+    snapshot_markdown = format_snapshot_markdown(stats, repos)
     summary_markdown = format_portfolio_summary(stats, repos, categorized)
     metrics_markdown = format_metrics_markdown(stats, frameworks)
 
+    snapshot_ok = inject_section(PROFILE_README, SNAPSHOT_START, SNAPSHOT_END, snapshot_markdown)
     summary_ok = inject_section(PROFILE_README, SUMMARY_START, SUMMARY_END, summary_markdown)
     metrics_ok = inject_section(PROFILE_README, METRICS_START, METRICS_END, metrics_markdown)
     json_ok = save_metrics_json(stats)
 
-    if summary_ok and metrics_ok and json_ok:
+    if snapshot_ok and summary_ok and metrics_ok and json_ok:
         print("Profile snapshot generation complete")
         return True
 
