@@ -6,9 +6,6 @@
   <a href="https://scholar.google.com/citations?user=ieEEv8kAAAAJ&hl=en">
     <img src="https://img.shields.io/badge/Google_Scholar-Profile-4285F4?style=flat-square&logo=googlescholar&logoColor=white" alt="Google Scholar" />
   </a>
-  <a href="https://github.com/hrwatts">
-    <img src="https://img.shields.io/badge/GitHub-hrwatts-181717?style=flat-square&logo=github&logoColor=white" alt="GitHub" />
-  </a>
   <a href="https://www.ua.edu/">
     <img src="https://img.shields.io/badge/University_of_Alabama-Research-A6192E?style=flat-square" alt="University of Alabama" />
   </a>
