@@ -35,15 +35,3 @@ Research spans stochastic processes, dynamical systems, inference, and scientifi
 <!-- START_SUMMARY -->
 *Auto-generated portfolio snapshot appears here.*
 <!-- END_SUMMARY -->
-
-## GitHub Snapshot
-
-<!-- START_SNAPSHOT -->
-*Auto-generated GitHub snapshot appears here.*
-<!-- END_SNAPSHOT -->
-
-## Daily Metrics
-
-<!-- START_METRICS -->
-*Auto-generated metrics appear here.*
-<!-- END_METRICS -->
