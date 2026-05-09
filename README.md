@@ -33,25 +33,47 @@ Research spans stochastic processes, dynamical systems, inference, and scientifi
 ## Portfolio Snapshot
 
 <!-- START_SUMMARY -->
-- Public repositories: 26
+- Tracking public, non-fork repositories owned by `hrwatts` and `hrwdata`
+- Public repositories: 8
 - Total stars and forks: 0 stars, 1 forks
-- Primary languages: Jupyter Notebook, C++, Python
-- Recently updated: `hrwatts`, `python_automation`, `clickup-engine`
+- Primary languages: Python, Jupyter Notebook, C++
+- Recently updated: `hrwatts/python_automation`, `hrwatts/clickup-engine`, `hrwatts/EMgLASSO`
 
 ### Featured Repositories
-- [Retrieval-based-Voice-Conversion-WebUI](https://github.com/hrwatts/Retrieval-based-Voice-Conversion-WebUI) - Easily train a good VC model with voice data <= 10 mins!
-- [hrwatts](https://github.com/hrwatts/hrwatts) - No description provided.
-- [python_automation](https://github.com/hrwatts/python_automation) - Automated Python scripts
-- [clickup-engine](https://github.com/hrwatts/clickup-engine) - Lightweight orchestration layer for ClickUp — scheduler, mobile check-in, and hygiene reports
-- [jsonlab](https://github.com/hrwatts/jsonlab) - JSONlab: a toolbox to encode/decode JSON files in MATLAB/Octave
+- [hrwatts/MATLAB_projects](https://github.com/hrwatts/MATLAB_projects) - A simple MATLAB tutorial for solving ODEs
+- [hrwatts/python_automation](https://github.com/hrwatts/python_automation) - Automated Python scripts
+- [hrwatts/clickup-engine](https://github.com/hrwatts/clickup-engine) - Lightweight orchestration layer for ClickUp — scheduler, mobile check-in, and hygiene reports
+- [hrwatts/EMgLASSO](https://github.com/hrwatts/EMgLASSO) - Simulate a precision matrix using graphical LASSO and EM
+- [hrwatts/automated_commits](https://github.com/hrwatts/automated_commits) - Automatically commit to GitHub
 
-*Last updated: 2026-05-09 15:46:55 UTC*
+*Last updated: 2026-05-09 15:59:56 UTC*
 <!-- END_SUMMARY -->
 
 ## GitHub Snapshot
 
 <!-- START_SNAPSHOT -->
-*Auto-generated GitHub snapshot appears here.*
+### Profile Stats
+- Tracking public, non-fork repositories owned by `hrwatts` and `hrwdata`
+- Excludes the `hrwatts` profile repository
+- Public repositories counted: 8
+- Total stars: 0
+- Total forks: 1
+
+### Top Languages
+- Python: 447,684 bytes
+- Jupyter Notebook: 65,541 bytes
+- C++: 8,712 bytes
+- R: 6,458 bytes
+- MATLAB: 985 bytes
+
+### Recently Updated
+- `hrwatts/python_automation`
+- `hrwatts/clickup-engine`
+- `hrwatts/EMgLASSO`
+- `hrwatts/automated_commits`
+- `hrwatts/C-Projects`
+
+*Last updated: 2026-05-09 15:59:56 UTC*
 <!-- END_SNAPSHOT -->
 
 ## Daily Metrics
@@ -59,25 +81,25 @@ Research spans stochastic processes, dynamical systems, inference, and scientifi
 <!-- START_METRICS -->
 ### Research Area Breakdown
 - Stochastic processes: 0 repos (0 stars)
-- Dynamical systems: 7 repos (0 stars)
+- Dynamical systems: 1 repos (0 stars)
 - Applied probability: 0 repos (0 stars)
 - Statistical computing: 0 repos (0 stars)
 - Quantitative finance: 0 repos (0 stars)
-- Other projects: 19 repos (0 stars)
+- Other projects: 7 repos (0 stars)
 
 ### Framework Usage
-- TensorFlow: 1 projects
+- TensorFlow: 0 projects
 - PyTorch: 0 projects
 - NumPy: 0 projects
 - SciPy: 0 projects
-- MATLAB: 2 projects
+- MATLAB: 1 projects
 
 ### Primary Languages
-- Jupyter Notebook: 161,348,214 bytes
-- C++: 133,288,103 bytes
-- Python: 31,751,728 bytes
-- Fortran: 1,326,307 bytes
-- C#: 1,226,466 bytes
+- Python: 447,684 bytes
+- Jupyter Notebook: 65,541 bytes
+- C++: 8,712 bytes
+- R: 6,458 bytes
+- MATLAB: 985 bytes
 
-*Last updated: 2026-05-09 15:46:55 UTC*
+*Last updated: 2026-05-09 15:59:56 UTC*
 <!-- END_METRICS -->
