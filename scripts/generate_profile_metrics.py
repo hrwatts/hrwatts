@@ -56,6 +56,14 @@ FRAMEWORK_KEYWORDS = {
     "matlab": ["matlab"],
 }
 
+FRAMEWORK_DISPLAY = [
+    ("tensorflow", "TensorFlow"),
+    ("pytorch", "PyTorch"),
+    ("numpy", "NumPy"),
+    ("scipy", "SciPy"),
+    ("matlab", "MATLAB"),
+]
+
 
 def now_utc() -> datetime:
     return datetime.utcnow()
