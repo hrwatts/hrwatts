@@ -1,0 +1,44 @@
+{
+  "total_repositories": 26,
+  "total_stars": 0,
+  "total_forks": 1,
+  "repositories_by_research_area": {
+    "stochastic": 0,
+    "dynamical": 7,
+    "probability": 0,
+    "computing": 0,
+    "finance": 0,
+    "other": 19
+  },
+  "stars_by_research_area": {
+    "stochastic": 0,
+    "dynamical": 0,
+    "probability": 0,
+    "computing": 0,
+    "finance": 0,
+    "other": 0
+  },
+  "top_languages": [
+    {
+      "name": "Jupyter Notebook",
+      "bytes": 161348214
+    },
+    {
+      "name": "C++",
+      "bytes": 133288103
+    },
+    {
+      "name": "Python",
+      "bytes": 31751728
+    },
+    {
+      "name": "Fortran",
+      "bytes": 1326307
+    },
+    {
+      "name": "C#",
+      "bytes": 1226466
+    }
+  ],
+  "generated_at": "2026-05-09T15:46:55.005062Z"
+}
