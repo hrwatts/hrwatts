@@ -1,0 +1,51 @@
+{
+  "tracked_owners": [
+    "hrwatts",
+    "hrwdata"
+  ],
+  "excluded_repositories": [
+    "hrwatts"
+  ],
+  "total_repositories": 8,
+  "total_stars": 0,
+  "total_forks": 1,
+  "repositories_by_research_area": {
+    "stochastic": 0,
+    "dynamical": 1,
+    "probability": 0,
+    "computing": 0,
+    "finance": 0,
+    "other": 7
+  },
+  "stars_by_research_area": {
+    "stochastic": 0,
+    "dynamical": 0,
+    "probability": 0,
+    "computing": 0,
+    "finance": 0,
+    "other": 0
+  },
+  "top_languages": [
+    {
+      "name": "Python",
+      "bytes": 447684
+    },
+    {
+      "name": "Jupyter Notebook",
+      "bytes": 65541
+    },
+    {
+      "name": "C++",
+      "bytes": 8712
+    },
+    {
+      "name": "R",
+      "bytes": 6458
+    },
+    {
+      "name": "MATLAB",
+      "bytes": 985
+    }
+  ],
+  "generated_at": "2026-05-09T15:59:56.533152Z"
+}

@@ -33,5 +33,18 @@ Research spans stochastic processes, dynamical systems, inference, and scientifi
 ## Portfolio Snapshot
 
 <!-- START_SUMMARY -->
-*Auto-generated portfolio snapshot appears here.*
+- Tracking public, non-fork repositories owned by `hrwatts` and `hrwdata`
+- Public repositories: 8
+- Total stars and forks: 0 stars, 1 forks
+- Primary languages: Python, Jupyter Notebook, C++
+- Recently updated: `hrwatts/python_automation`, `hrwatts/clickup-engine`, `hrwatts/EMgLASSO`
+
+### Featured Repositories
+- [hrwatts/MATLAB_projects](https://github.com/hrwatts/MATLAB_projects) - A simple MATLAB tutorial for solving ODEs
+- [hrwatts/python_automation](https://github.com/hrwatts/python_automation) - Automated Python scripts
+- [hrwatts/clickup-engine](https://github.com/hrwatts/clickup-engine) - Lightweight orchestration layer for ClickUp — scheduler, mobile check-in, and hygiene reports
+- [hrwatts/EMgLASSO](https://github.com/hrwatts/EMgLASSO) - Simulate a precision matrix using graphical LASSO and EM
+- [hrwatts/automated_commits](https://github.com/hrwatts/automated_commits) - Automatically commit to GitHub
+
+*Last updated: 2026-05-09 15:59:56 UTC*
 <!-- END_SUMMARY -->
