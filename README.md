@@ -50,11 +50,9 @@ Research spans stochastic processes, dynamical systems, inference, and scientifi
 
 ## GitHub Snapshot
 
-<!-- AUTO-GENERATED: github-readme-stats card -->
-<p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=hrwatts&show_icons=true&theme=transparent&hide_border=true&count_private=false" alt="GitHub Stats" width="54%" />
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=hrwatts&layout=compact&theme=transparent&hide_border=true&langs_count=8" alt="Top Languages" width="41%" />
-</p>
+<!-- START_SNAPSHOT -->
+*Auto-generated GitHub snapshot appears here.*
+<!-- END_SNAPSHOT -->
 
 ## Daily Metrics
 
