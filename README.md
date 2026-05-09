@@ -32,7 +32,7 @@ Deep dive implementations of foundational machine learning algorithms with empha
 ### 📘 **Scientific Computing with MATLAB**
 MATLAB implementations of mathematical models and numerical methods, including solutions to ordinary and partial differential equations, stability analysis, and phase portrait visualization. Tutorials on computational approaches to dynamical systems and stochastic differential equations.
 
-- **Repo**: [MATLAB_projects](https://github.com/hrwatts/MATLAB_projects)
+- **Repo**: [MATLAB_projects](https://github.com/hrwdata/MATLAB_projects)
 - **Tech**: MATLAB, differential equations, numerical analysis
 - **Focus**: Dynamical systems simulation and analysis
 
