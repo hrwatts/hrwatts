@@ -27,8 +27,16 @@
   },
   "top_languages": [
     {
+      "name": "HTML",
+      "bytes": 2493102
+    },
+    {
       "name": "Python",
       "bytes": 528366
+    },
+    {
+      "name": "MATLAB",
+      "bytes": 72434
     },
     {
       "name": "Jupyter Notebook",
@@ -37,15 +45,7 @@
     {
       "name": "R",
       "bytes": 23137
-    },
-    {
-      "name": "C++",
-      "bytes": 9129
-    },
-    {
-      "name": "CMake",
-      "bytes": 1662
     }
   ],
-  "generated_at": "2026-05-10T14:02:50.907907Z"
+  "generated_at": "2026-05-10T14:12:11.911923Z"
 }

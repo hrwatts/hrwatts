@@ -36,16 +36,16 @@ Research spans stochastic processes, dynamical systems, inference, and scientifi
 - Tracking public, non-fork repositories owned by `hrwatts` and `hrwdata`
 - Public repositories: 12
 - Total stars and forks: 0 stars, 1 forks
-- Primary languages: Python, Jupyter Notebook, R
-- Recently updated: `hrwatts/EMgLASSO`, `hrwatts/ornstein-uhlenbeck-cpp-tutorial`, `hrwatts/rotten-tomatoes-ranker`
+- Primary languages: HTML, Python, MATLAB
+- Recently updated: `hrwatts/MATLAB_projects`, `hrwatts/EMgLASSO`, `hrwatts/ornstein-uhlenbeck-cpp-tutorial`
 
 ### Featured Repositories
-- [hrwatts/MATLAB_projects](https://github.com/hrwatts/MATLAB_projects) - A simple MATLAB tutorial for solving ODEs
+- [hrwatts/MATLAB_projects](https://github.com/hrwatts/MATLAB_projects) - MATLAB research and teaching projects covering ordinary differential equations, numerical dynamics, optimization, and simple epidemiological modeling
 - [hrwatts/EMgLASSO](https://github.com/hrwatts/EMgLASSO) - Simulate a precision matrix using graphical LASSO and EM
 - [hrwatts/ornstein-uhlenbeck-cpp-tutorial](https://github.com/hrwatts/ornstein-uhlenbeck-cpp-tutorial) - C++ tutorial for simulating and plotting sample paths of an Ornstein-Uhlenbeck process with Euler-Maruyama time stepping
 - [hrwatts/rotten-tomatoes-ranker](https://github.com/hrwatts/rotten-tomatoes-ranker) - Builds a Rotten Tomatoes movie dataset and writes ranked CSV outputs
 - [hrwatts/python_automation](https://github.com/hrwatts/python_automation) - Automated Python scripts
 
-*Last updated: 2026-05-10 14:02:50 UTC*
+*Last updated: 2026-05-10 14:12:11 UTC*
 <!-- END_SUMMARY -->
 
