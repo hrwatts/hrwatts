@@ -49,8 +49,3 @@ Research spans stochastic processes, dynamical systems, inference, and scientifi
 *Last updated: 2026-05-09 15:59:56 UTC*
 <!-- END_SUMMARY -->
 
-## Metrics
-
-<!-- START_METRICS -->
-*Auto-generated profile metrics appear here.*
-<!-- END_METRICS -->
