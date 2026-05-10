@@ -34,23 +34,45 @@ Research spans stochastic processes, dynamical systems, inference, and scientifi
 
 <!-- START_SUMMARY -->
 - Tracking public, non-fork repositories owned by `hrwatts` and `hrwdata`
-- Public repositories: 8
+- Public repositories: 12
 - Total stars and forks: 0 stars, 1 forks
 - Primary languages: Python, Jupyter Notebook, C++
-- Recently updated: `hrwatts/python_automation`, `hrwatts/clickup-engine`, `hrwatts/EMgLASSO`
+- Recently updated: `hrwatts/ornstein-uhlenbeck-cpp-tutorial`, `hrwatts/rotten-tomatoes-ranker`, `hrwatts/python_automation`
 
 ### Featured Repositories
 - [hrwatts/MATLAB_projects](https://github.com/hrwatts/MATLAB_projects) - A simple MATLAB tutorial for solving ODEs
+- [hrwatts/ornstein-uhlenbeck-cpp-tutorial](https://github.com/hrwatts/ornstein-uhlenbeck-cpp-tutorial) - C++ tutorial for simulating and plotting sample paths of an Ornstein-Uhlenbeck process with Euler-Maruyama time stepping
+- [hrwatts/rotten-tomatoes-ranker](https://github.com/hrwatts/rotten-tomatoes-ranker) - Builds a Rotten Tomatoes movie dataset and writes ranked CSV outputs
 - [hrwatts/python_automation](https://github.com/hrwatts/python_automation) - Automated Python scripts
-- [hrwatts/clickup-engine](https://github.com/hrwatts/clickup-engine) - Lightweight orchestration layer for ClickUp — scheduler, mobile check-in, and hygiene reports
-- [hrwatts/EMgLASSO](https://github.com/hrwatts/EMgLASSO) - Simulate a precision matrix using graphical LASSO and EM
-- [hrwatts/automated_commits](https://github.com/hrwatts/automated_commits) - Automatically commit to GitHub
+- [hrwatts/C-Projects](https://github.com/hrwatts/C-Projects) - C++ is a general-purpose programming language created as an extension of the C programming language, or "C with Classes".
 
-*Last updated: 2026-05-09 15:59:56 UTC*
+*Last updated: 2026-05-10 13:42:29 UTC*
 <!-- END_SUMMARY -->
 
 ## Metrics
 
 <!-- START_METRICS -->
-*Auto-generated profile metrics appear here.*
+### Research Area Breakdown
+- Stochastic processes: 0 repos (0 stars)
+- Dynamical systems: 1 repos (0 stars)
+- Applied probability: 0 repos (0 stars)
+- Statistical computing: 0 repos (0 stars)
+- Quantitative finance: 0 repos (0 stars)
+- Other projects: 11 repos (0 stars)
+
+### Framework Usage
+- TensorFlow: 0 projects
+- PyTorch: 0 projects
+- NumPy: 0 projects
+- SciPy: 0 projects
+- MATLAB: 1 projects
+
+### Primary Languages
+- Python: 524,267 bytes
+- Jupyter Notebook: 66,610 bytes
+- C++: 9,129 bytes
+- R: 6,458 bytes
+- CMake: 1,662 bytes
+
+*Last updated: 2026-05-10 13:42:29 UTC*
 <!-- END_METRICS -->
