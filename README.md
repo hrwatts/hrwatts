@@ -49,30 +49,3 @@ Research spans stochastic processes, dynamical systems, inference, and scientifi
 *Last updated: 2026-05-10 13:42:29 UTC*
 <!-- END_SUMMARY -->
 
-## Metrics
-
-<!-- START_METRICS -->
-### Research Area Breakdown
-- Stochastic processes: 0 repos (0 stars)
-- Dynamical systems: 1 repos (0 stars)
-- Applied probability: 0 repos (0 stars)
-- Statistical computing: 0 repos (0 stars)
-- Quantitative finance: 0 repos (0 stars)
-- Other projects: 11 repos (0 stars)
-
-### Framework Usage
-- TensorFlow: 0 projects
-- PyTorch: 0 projects
-- NumPy: 0 projects
-- SciPy: 0 projects
-- MATLAB: 1 projects
-
-### Primary Languages
-- Python: 524,267 bytes
-- Jupyter Notebook: 66,610 bytes
-- C++: 9,129 bytes
-- R: 6,458 bytes
-- CMake: 1,662 bytes
-
-*Last updated: 2026-05-10 13:42:29 UTC*
-<!-- END_METRICS -->
