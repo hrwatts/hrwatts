@@ -6,7 +6,7 @@
   "excluded_repositories": [
     "hrwatts"
   ],
-  "total_repositories": 8,
+  "total_repositories": 12,
   "total_stars": 0,
   "total_forks": 1,
   "repositories_by_research_area": {
@@ -15,7 +15,7 @@
     "probability": 0,
     "computing": 0,
     "finance": 0,
-    "other": 7
+    "other": 11
   },
   "stars_by_research_area": {
     "stochastic": 0,
@@ -28,24 +28,24 @@
   "top_languages": [
     {
       "name": "Python",
-      "bytes": 447684
+      "bytes": 524267
     },
     {
       "name": "Jupyter Notebook",
-      "bytes": 65541
+      "bytes": 66610
     },
     {
       "name": "C++",
-      "bytes": 8712
+      "bytes": 9129
     },
     {
       "name": "R",
       "bytes": 6458
     },
     {
-      "name": "MATLAB",
-      "bytes": 985
+      "name": "CMake",
+      "bytes": 1662
     }
   ],
-  "generated_at": "2026-05-09T15:59:56.533152Z"
+  "generated_at": "2026-05-10T13:42:29.457123Z"
 }
