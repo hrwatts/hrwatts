@@ -278,13 +278,21 @@ def format_metrics_markdown(stats: Dict, frameworks: Dict[str, int]) -> str:
     return "\n".join(lines)
 
 
-def inject_section(readme_path: Path, start_marker: str, end_marker: str, body: str) -> bool:
+def inject_section(
+    readme_path: Path,
+    start_marker: str,
+    end_marker: str,
+    body: str,
+    *,
+    required: bool = True,
+) -> bool:
     """Replace a marker-delimited section in the README."""
     try:
         content = readme_path.read_text(encoding="utf-8")
         if start_marker not in content or end_marker not in content:
-            print(f"WARNING: Markers not found: {start_marker} ... {end_marker}")
-            return False
+            level = "WARNING" if required else "INFO"
+            print(f"{level}: Markers not found: {start_marker} ... {end_marker}")
+            return not required
 
         start_idx = content.find(start_marker) + len(start_marker)
         end_idx = content.find(end_marker)
@@ -332,7 +340,13 @@ def main() -> bool:
     metrics_markdown = format_metrics_markdown(stats, frameworks)
 
     summary_ok = inject_section(PROFILE_README, SUMMARY_START, SUMMARY_END, summary_markdown)
-    metrics_ok = inject_section(PROFILE_README, METRICS_START, METRICS_END, metrics_markdown)
+    metrics_ok = inject_section(
+        PROFILE_README,
+        METRICS_START,
+        METRICS_END,
+        metrics_markdown,
+        required=False,
+    )
     json_ok = save_metrics_json(stats)
 
     if summary_ok and metrics_ok and json_ok:
