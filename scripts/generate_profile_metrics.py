@@ -8,7 +8,7 @@ import json
 import os
 from datetime import datetime
 from pathlib import Path
-from typing import Dict, List, Tuple
+from typing import Dict, List
 
 try:
     from github import Auth, Github
@@ -18,13 +18,10 @@ except ImportError:
 
 USERNAME = "hrwatts"
 TRACKED_OWNERS = ("hrwatts", "hrwdata")
-TRACKED_ORGS = ("hrwdata",)
 EXCLUDED_REPOSITORIES = {USERNAME}
 PROFILE_README = Path(__file__).parent.parent / "README.md"
 METRICS_OUTPUT = Path(__file__).parent.parent / "metrics.json"
 
-SNAPSHOT_START = "<!-- START_SNAPSHOT -->"
-SNAPSHOT_END = "<!-- END_SNAPSHOT -->"
 SUMMARY_START = "<!-- START_SUMMARY -->"
 SUMMARY_END = "<!-- END_SUMMARY -->"
 METRICS_START = "<!-- START_METRICS -->"
@@ -83,16 +80,21 @@ def is_tracked_repo(repo) -> bool:
     )
 
 
-def get_account_repos(gh: Github, account_name: str, is_org: bool) -> List:
-    """Fetch public repositories for a user or organization account."""
-    try:
-        account = gh.get_organization(account_name) if is_org else gh.get_user(account_name)
-        repos = list(account.get_repos(type="public", sort="updated", direction="desc"))
-        print(f"Fetched {len(repos)} repositories from {account_name}")
-        return repos
-    except Exception as exc:
-        print(f"ERROR fetching repositories for {account_name}: {exc}")
-        return []
+def get_account_repos(gh: Github, account_name: str) -> List:
+    """Fetch public repositories for an account listed in TRACKED_OWNERS."""
+    errors = []
+
+    for account_type, getter in (("user", gh.get_user), ("organization", gh.get_organization)):
+        try:
+            account = getter(account_name)
+            repos = list(account.get_repos(type="public", sort="updated", direction="desc"))
+            print(f"Fetched {len(repos)} repositories from {account_name} ({account_type})")
+            return repos
+        except Exception as exc:
+            errors.append(f"{account_type}: {exc}")
+
+    print(f"ERROR fetching repositories for {account_name}: {' | '.join(errors)}")
+    return []
 
 
 def get_tracked_repos(gh: Github) -> List:
@@ -100,13 +102,8 @@ def get_tracked_repos(gh: Github) -> List:
     all_repos = []
     seen = set()
 
-    account_specs: Tuple[Tuple[str, bool], ...] = (
-        (USERNAME, False),
-        *((org_name, True) for org_name in TRACKED_ORGS),
-    )
-
-    for account_name, is_org in account_specs:
-        for repo in get_account_repos(gh, account_name, is_org):
+    for account_name in TRACKED_OWNERS:
+        for repo in get_account_repos(gh, account_name):
             if not is_tracked_repo(repo):
                 continue
             if repo.full_name in seen:
@@ -247,42 +244,6 @@ def format_portfolio_summary(stats: Dict, repos: List, categorized: Dict[str, Li
     return "\n".join(lines)
 
 
-def format_snapshot_markdown(stats: Dict, repos: List) -> str:
-    """Format a reliable in-README replacement for external stats cards."""
-    generated = now_utc().strftime("%Y-%m-%d %H:%M:%S UTC")
-    top_languages = stats["top_languages"] or []
-
-    lines = [
-        "### Profile Stats",
-        "- Tracking public, non-fork repositories owned by `hrwatts` and `hrwdata`",
-        "- Excludes the `hrwatts` profile repository",
-        f"- Public repositories counted: {stats['total_repositories']}",
-        f"- Total stars: {stats['total_stars']}",
-        f"- Total forks: {stats['total_forks']}",
-        "",
-        "### Top Languages",
-    ]
-
-    if top_languages:
-        for language in top_languages:
-            lines.append(f"- {language['name']}: {language['bytes']:,} bytes")
-    else:
-        lines.append("- No language data available")
-
-    if repos:
-        lines.extend(
-            [
-                "",
-                "### Recently Updated",
-                *[f"- `{repo.full_name}`" for repo in repos[:5]],
-            ]
-        )
-
-    lines.append("")
-    lines.append(f"*Last updated: {generated}*")
-    return "\n".join(lines)
-
-
 def format_metrics_markdown(stats: Dict, frameworks: Dict[str, int]) -> str:
     """Format daily metrics as Markdown for README injection."""
     repo_stats = stats["repositories_by_research_area"]
@@ -367,16 +328,14 @@ def main() -> bool:
     frameworks = extract_frameworks(repos)
     stats = calculate_stats(repos, categorized)
 
-    snapshot_markdown = format_snapshot_markdown(stats, repos)
     summary_markdown = format_portfolio_summary(stats, repos, categorized)
     metrics_markdown = format_metrics_markdown(stats, frameworks)
 
-    snapshot_ok = inject_section(PROFILE_README, SNAPSHOT_START, SNAPSHOT_END, snapshot_markdown)
     summary_ok = inject_section(PROFILE_README, SUMMARY_START, SUMMARY_END, summary_markdown)
     metrics_ok = inject_section(PROFILE_README, METRICS_START, METRICS_END, metrics_markdown)
     json_ok = save_metrics_json(stats)
 
-    if snapshot_ok and summary_ok and metrics_ok and json_ok:
+    if summary_ok and metrics_ok and json_ok:
         print("Profile snapshot generation complete")
         return True
 
