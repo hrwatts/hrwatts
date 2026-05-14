@@ -37,15 +37,15 @@ Research spans stochastic processes, dynamical systems, inference, and scientifi
 - Public repositories: 13
 - Total stars and forks: 0 stars, 1 forks
 - Primary languages: HTML, Python, MATLAB
-- Recently updated: `hrwatts/EMgLASSO`, `hrwatts/median-ci-power-ttest`, `hrwatts/python_automation`
+- Recently updated: `hrwatts/python_automation`, `hrwatts/EMgLASSO`, `hrwatts/median-ci-power-ttest`
 
 ### Featured Repositories
 - [hrwatts/MATLAB_projects](https://github.com/hrwatts/MATLAB_projects) - MATLAB research and teaching projects covering ordinary differential equations, numerical dynamics, optimization, and simple epidemiological modeling
+- [hrwatts/python_automation](https://github.com/hrwatts/python_automation) - Automated Python scripts
 - [hrwatts/EMgLASSO](https://github.com/hrwatts/EMgLASSO) - Simulate a precision matrix using graphical LASSO and EM
 - [hrwatts/median-ci-power-ttest](https://github.com/hrwatts/median-ci-power-ttest) - Reproducible research companion for a statistical note on exact-coverage confidence intervals for the power of the one-sample Student t-test
-- [hrwatts/python_automation](https://github.com/hrwatts/python_automation) - Automated Python scripts
 - [hrwatts/ornstein-uhlenbeck-cpp-tutorial](https://github.com/hrwatts/ornstein-uhlenbeck-cpp-tutorial) - C++ tutorial for simulating and plotting sample paths of an Ornstein-Uhlenbeck process with Euler-Maruyama time stepping
 
-*Last updated: 2026-05-13 02:29:05 UTC*
+*Last updated: 2026-05-14 02:30:40 UTC*
 <!-- END_SUMMARY -->
 
