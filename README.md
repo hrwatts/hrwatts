@@ -34,18 +34,18 @@ Research spans stochastic processes, dynamical systems, inference, and scientifi
 
 <!-- START_SUMMARY -->
 - Tracking public, non-fork repositories owned by `hrwatts` and `hrwdata`
-- Public repositories: 14
+- Public repositories: 16
 - Total stars and forks: 0 stars, 1 forks
 - Primary languages: HTML, Python, MATLAB
-- Recently updated: `hrwdata/paper-forensics`, `hrwatts/python_automation`, `hrwatts/EMgLASSO`
+- Recently updated: `hrwatts/ifsn-logreg-benchmarks`, `hrwdata/dynamodb-batch-queue-tutorial`, `hrwdata/paper-forensics`
 
 ### Featured Repositories
-- [hrwatts/MATLAB_projects](https://github.com/hrwatts/MATLAB_projects) - MATLAB research and teaching projects covering ordinary differential equations, numerical dynamics, optimization, and simple epidemiological modeling
+- [hrwdata/dynamodb-batch-queue-tutorial](https://github.com/hrwdata/dynamodb-batch-queue-tutorial) - Tutorial project for modeling nightly database batch workloads in DynamoDB and analyzing queue congestion, delay, and overflow risk with Python.
+- [hrwatts/ifsn-logreg-benchmarks](https://github.com/hrwatts/ifsn-logreg-benchmarks) - Reproducible benchmarks for binary logistic regression with sequential subsampling Newton updates (fixed vs fresh), including sklearn baseline comparisons and tracked result artifacts.
 - [hrwdata/paper-forensics](https://github.com/hrwdata/paper-forensics) - TeX-first review application for academic document forensics
 - [hrwatts/python_automation](https://github.com/hrwatts/python_automation) - Automated Python scripts
 - [hrwatts/EMgLASSO](https://github.com/hrwatts/EMgLASSO) - Simulate a precision matrix using graphical LASSO and EM
-- [hrwatts/median-ci-power-ttest](https://github.com/hrwatts/median-ci-power-ttest) - Reproducible research companion for a statistical note on exact-coverage confidence intervals for the power of the one-sample Student t-test
 
-*Last updated: 2026-05-15 00:01:04 UTC*
+*Last updated: 2026-05-15 02:29:36 UTC*
 <!-- END_SUMMARY -->
 

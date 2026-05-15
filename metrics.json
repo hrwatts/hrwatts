@@ -6,16 +6,16 @@
   "excluded_repositories": [
     "hrwatts"
   ],
-  "total_repositories": 14,
+  "total_repositories": 16,
   "total_stars": 0,
   "total_forks": 1,
   "repositories_by_research_area": {
     "stochastic": 0,
-    "dynamical": 1,
+    "dynamical": 2,
     "probability": 0,
     "computing": 0,
     "finance": 0,
-    "other": 13
+    "other": 14
   },
   "stars_by_research_area": {
     "stochastic": 0,
@@ -32,7 +32,7 @@
     },
     {
       "name": "Python",
-      "bytes": 642795
+      "bytes": 820692
     },
     {
       "name": "MATLAB",
@@ -47,5 +47,5 @@
       "bytes": 33591
     }
   ],
-  "generated_at": "2026-05-15T00:01:04.369225Z"
+  "generated_at": "2026-05-15T02:29:36.089097Z"
 }
