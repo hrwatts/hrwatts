@@ -7,7 +7,7 @@
     "hrwatts"
   ],
   "total_repositories": 16,
-  "total_stars": 0,
+  "total_stars": 3,
   "total_forks": 1,
   "repositories_by_research_area": {
     "stochastic": 0,
@@ -23,7 +23,7 @@
     "probability": 0,
     "computing": 0,
     "finance": 0,
-    "other": 0
+    "other": 3
   },
   "top_languages": [
     {
@@ -47,5 +47,5 @@
       "bytes": 33591
     }
   ],
-  "generated_at": "2026-05-15T02:29:36.089097Z"
+  "generated_at": "2026-05-16T02:11:36.533959Z"
 }
