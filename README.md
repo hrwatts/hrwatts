@@ -37,15 +37,15 @@ Research spans stochastic processes, dynamical systems, inference, and scientifi
 - Public repositories: 16
 - Total stars and forks: 4 stars, 1 forks
 - Primary languages: HTML, Python, MATLAB
-- Recently updated: `hrwatts/python_automation`, `hrwdata/paper-forensics`, `hrwatts/EMgLASSO`
+- Recently updated: `hrwatts/median-ci-power-ttest`, `hrwatts/python_automation`, `hrwdata/paper-forensics`
 
 ### Featured Repositories
 - [hrwdata/dynamodb-batch-queue-tutorial](https://github.com/hrwdata/dynamodb-batch-queue-tutorial) - Tutorial project for modeling nightly database batch workloads in DynamoDB and analyzing queue congestion, delay, and overflow risk with Python.
+- [hrwatts/median-ci-power-ttest](https://github.com/hrwatts/median-ci-power-ttest) - Reproducible research companion for a statistical note on exact-coverage confidence intervals for the power of the one-sample Student t-test
 - [hrwdata/paper-forensics](https://github.com/hrwdata/paper-forensics) - TeX-first review application for academic document forensics
 - [hrwatts/EMgLASSO](https://github.com/hrwatts/EMgLASSO) - Simulate a precision matrix using graphical LASSO and EM
 - [hrwatts/ifsn-logreg-benchmarks](https://github.com/hrwatts/ifsn-logreg-benchmarks) - Reproducible benchmarks for binary logistic regression with sequential subsampling Newton updates (fixed vs fresh), including sklearn baseline comparisons and tracked result artifacts.
-- [hrwatts/median-ci-power-ttest](https://github.com/hrwatts/median-ci-power-ttest) - Reproducible research companion for a statistical note on exact-coverage confidence intervals for the power of the one-sample Student t-test
 
-*Last updated: 2026-05-30 02:27:22 UTC*
+*Last updated: 2026-05-31 02:43:38 UTC*
 <!-- END_SUMMARY -->
 
