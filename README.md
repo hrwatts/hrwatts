@@ -46,6 +46,6 @@ Research spans stochastic processes, dynamical systems, inference, and scientifi
 - [hrwatts/EMgLASSO](https://github.com/hrwatts/EMgLASSO) - Simulate a precision matrix using graphical LASSO and EM
 - [hrwatts/ifsn-logreg-benchmarks](https://github.com/hrwatts/ifsn-logreg-benchmarks) - Reproducible benchmarks for binary logistic regression with sequential subsampling Newton updates (fixed vs fresh), including sklearn baseline comparisons and tracked result artifacts.
 
-*Last updated: 2026-06-01 02:52:34 UTC*
+*Last updated: 2026-06-02 02:49:35 UTC*
 <!-- END_SUMMARY -->
 
