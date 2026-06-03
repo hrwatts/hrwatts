@@ -34,18 +34,18 @@ Research spans stochastic processes, dynamical systems, inference, and scientifi
 
 <!-- START_SUMMARY -->
 - Tracking public, non-fork repositories owned by `hrwatts` and `hrwdata`
-- Public repositories: 16
-- Total stars and forks: 4 stars, 1 forks
+- Public repositories: 17
+- Total stars and forks: 5 stars, 1 forks
 - Primary languages: HTML, Python, MATLAB
-- Recently updated: `hrwatts/python_automation`, `hrwatts/median-ci-power-ttest`, `hrwdata/paper-forensics`
+- Recently updated: `hrwatts/lean-erm`, `hrwatts/python_automation`, `hrwatts/median-ci-power-ttest`
 
 ### Featured Repositories
 - [hrwdata/dynamodb-batch-queue-tutorial](https://github.com/hrwdata/dynamodb-batch-queue-tutorial) - Tutorial project for modeling nightly database batch workloads in DynamoDB and analyzing queue congestion, delay, and overflow risk with Python.
+- [hrwatts/lean-erm](https://github.com/hrwatts/lean-erm) - This repository currently formalizes the deterministic core behind a standard ERM oracle inequality.
 - [hrwatts/median-ci-power-ttest](https://github.com/hrwatts/median-ci-power-ttest) - Reproducible research companion for a statistical note on exact-coverage confidence intervals for the power of the one-sample Student t-test
 - [hrwdata/paper-forensics](https://github.com/hrwdata/paper-forensics) - TeX-first review application for academic document forensics
 - [hrwatts/EMgLASSO](https://github.com/hrwatts/EMgLASSO) - Simulate a precision matrix using graphical LASSO and EM
-- [hrwatts/ifsn-logreg-benchmarks](https://github.com/hrwatts/ifsn-logreg-benchmarks) - Reproducible benchmarks for binary logistic regression with sequential subsampling Newton updates (fixed vs fresh), including sklearn baseline comparisons and tracked result artifacts.
 
-*Last updated: 2026-06-02 02:49:35 UTC*
+*Last updated: 2026-06-03 02:58:36 UTC*
 <!-- END_SUMMARY -->
 
