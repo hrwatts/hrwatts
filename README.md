@@ -37,7 +37,7 @@ Research spans stochastic processes, dynamical systems, inference, and scientifi
 - Public repositories: 17
 - Total stars and forks: 5 stars, 1 forks
 - Primary languages: HTML, Python, MATLAB
-- Recently updated: `hrwatts/median-ci-power-ttest`, `hrwatts/lean-erm`, `hrwatts/python_automation`
+- Recently updated: `hrwatts/python_automation`, `hrwatts/median-ci-power-ttest`, `hrwatts/lean-erm`
 
 ### Featured Repositories
 - [hrwdata/dynamodb-batch-queue-tutorial](https://github.com/hrwdata/dynamodb-batch-queue-tutorial) - Tutorial project for modeling nightly database batch workloads in DynamoDB and analyzing queue congestion, delay, and overflow risk with Python.
@@ -46,6 +46,6 @@ Research spans stochastic processes, dynamical systems, inference, and scientifi
 - [hrwdata/paper-forensics](https://github.com/hrwdata/paper-forensics) - TeX-first review application for academic document forensics
 - [hrwatts/EMgLASSO](https://github.com/hrwatts/EMgLASSO) - Simulate a precision matrix using graphical LASSO and EM
 
-*Last updated: 2026-06-04 02:54:10 UTC*
+*Last updated: 2026-06-05 02:41:21 UTC*
 <!-- END_SUMMARY -->
 
