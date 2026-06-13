@@ -46,6 +46,6 @@ Research spans stochastic processes, dynamical systems, inference, and scientifi
 - [hrwdata/paper-forensics](https://github.com/hrwdata/paper-forensics) - TeX-first review application for academic document forensics
 - [hrwatts/EMgLASSO](https://github.com/hrwatts/EMgLASSO) - Simulate a precision matrix using graphical LASSO and EM
 
-*Last updated: 2026-06-12 02:47:46 UTC*
+*Last updated: 2026-06-13 00:40:14 UTC*
 <!-- END_SUMMARY -->
 
