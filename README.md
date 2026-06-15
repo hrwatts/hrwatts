@@ -34,18 +34,18 @@ Research spans stochastic processes, dynamical systems, inference, and scientifi
 
 <!-- START_SUMMARY -->
 - Tracking public, non-fork repositories owned by `hrwatts` and `hrwdata`
-- Public repositories: 17
+- Public repositories: 19
 - Total stars and forks: 5 stars, 1 forks
 - Primary languages: HTML, Python, MATLAB
-- Recently updated: `hrwatts/python_automation`, `hrwatts/median-ci-power-ttest`, `hrwatts/lean-erm`
+- Recently updated: `hrwdata/neyman-pearson-tests-repro`, `hrwdata/fisher-iris-discriminant-reproduction`, `hrwdata/dynamodb-batch-queue-tutorial`
 
 ### Featured Repositories
 - [hrwdata/dynamodb-batch-queue-tutorial](https://github.com/hrwdata/dynamodb-batch-queue-tutorial) - Tutorial project for modeling nightly database batch workloads in DynamoDB and analyzing queue congestion, delay, and overflow risk with Python.
+- [hrwdata/neyman-pearson-tests-repro](https://github.com/hrwdata/neyman-pearson-tests-repro) - Deterministic Python reproduction of selected analytic examples, numerical checks, and schematic figures from Neyman and Pearson (1933).
 - [hrwatts/median-ci-power-ttest](https://github.com/hrwatts/median-ci-power-ttest) - Reproducible research companion for a statistical note on exact-coverage confidence intervals for the power of the one-sample Student t-test
 - [hrwatts/lean-erm](https://github.com/hrwatts/lean-erm) - This repository currently formalizes the deterministic core behind a standard ERM oracle inequality.
 - [hrwdata/paper-forensics](https://github.com/hrwdata/paper-forensics) - TeX-first review application for academic document forensics
-- [hrwatts/EMgLASSO](https://github.com/hrwatts/EMgLASSO) - Simulate a precision matrix using graphical LASSO and EM
 
-*Last updated: 2026-06-14 00:38:47 UTC*
+*Last updated: 2026-06-15 00:40:16 UTC*
 <!-- END_SUMMARY -->
 
