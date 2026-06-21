@@ -46,6 +46,6 @@ Research spans stochastic processes, dynamical systems, inference, and scientifi
 - [hrwatts/lean-erm](https://github.com/hrwatts/lean-erm) - This repository currently formalizes the deterministic core behind a standard ERM oracle inequality.
 - [hrwdata/paper-forensics](https://github.com/hrwdata/paper-forensics) - TeX-first review application for academic document forensics
 
-*Last updated: 2026-06-20 00:36:30 UTC*
+*Last updated: 2026-06-21 00:39:07 UTC*
 <!-- END_SUMMARY -->
 
