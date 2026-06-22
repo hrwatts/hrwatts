@@ -34,18 +34,18 @@ Research spans stochastic processes, dynamical systems, inference, and scientifi
 
 <!-- START_SUMMARY -->
 - Tracking public, non-fork repositories owned by `hrwatts` and `hrwdata`
-- Public repositories: 21
-- Total stars and forks: 5 stars, 1 forks
+- Public repositories: 24
+- Total stars and forks: 7 stars, 1 forks
 - Primary languages: HTML, Python, MATLAB
-- Recently updated: `hrwatts/python_automation`, `hrwatts/gem-lasso`, `hrwdata/git-context-guard`
+- Recently updated: `hrwatts/digital-harmony-studies`, `hrwatts/gem-lasso`, `hrwdata/necessary-connexion`
 
 ### Featured Repositories
 - [hrwatts/gem-lasso](https://github.com/hrwatts/gem-lasso) - Python implementation of Gaussian mixture modeling with sparse component precision matrices and graph extraction
-- [hrwdata/neyman-pearson-tests-repro](https://github.com/hrwdata/neyman-pearson-tests-repro) - Deterministic Python reproduction of selected analytic examples, numerical checks, and schematic figures from Neyman and Pearson (1933).
+- [hrwatts/or-algos](https://github.com/hrwatts/or-algos) - Python ports of optimization routines
+- [hrwatts/digital-harmony-studies](https://github.com/hrwatts/digital-harmony-studies) - Creative-coding repository for John Whitney-inspired harmonic motion graphics
 - [hrwatts/median-ci-power-ttest](https://github.com/hrwatts/median-ci-power-ttest) - Reproducible research companion for a statistical note on exact-coverage confidence intervals for the power of the one-sample Student t-test
 - [hrwatts/lean-erm](https://github.com/hrwatts/lean-erm) - This repository currently formalizes the deterministic core behind a standard ERM oracle inequality.
-- [hrwdata/paper-forensics](https://github.com/hrwdata/paper-forensics) - TeX-first review application for academic document forensics
 
-*Last updated: 2026-06-21 00:39:07 UTC*
+*Last updated: 2026-06-22 00:39:05 UTC*
 <!-- END_SUMMARY -->
 

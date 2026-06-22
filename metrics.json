@@ -6,33 +6,33 @@
   "excluded_repositories": [
     "hrwatts"
   ],
-  "total_repositories": 21,
-  "total_stars": 5,
+  "total_repositories": 24,
+  "total_stars": 7,
   "total_forks": 1,
   "repositories_by_research_area": {
     "stochastic": 0,
     "dynamical": 3,
     "probability": 0,
-    "computing": 1,
+    "computing": 2,
     "finance": 0,
-    "other": 17
+    "other": 19
   },
   "stars_by_research_area": {
     "stochastic": 0,
-    "dynamical": 0,
+    "dynamical": 1,
     "probability": 0,
     "computing": 0,
     "finance": 0,
-    "other": 5
+    "other": 6
   },
   "top_languages": [
     {
       "name": "HTML",
-      "bytes": 2679940
+      "bytes": 2680792
     },
     {
       "name": "Python",
-      "bytes": 1081758
+      "bytes": 1127174
     },
     {
       "name": "MATLAB",
@@ -43,9 +43,9 @@
       "bytes": 66610
     },
     {
-      "name": "TeX",
-      "bytes": 34498
+      "name": "TypeScript",
+      "bytes": 43357
     }
   ],
-  "generated_at": "2026-06-21T00:39:07.378047Z"
+  "generated_at": "2026-06-22T00:39:05.338946Z"
 }
