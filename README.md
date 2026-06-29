@@ -46,6 +46,6 @@ Research spans stochastic processes, dynamical systems, inference, and scientifi
 - [hrwatts/median-ci-power-ttest](https://github.com/hrwatts/median-ci-power-ttest) - Reproducible research companion for a statistical note on exact-coverage confidence intervals for the power of the one-sample Student t-test
 - [hrwatts/lean-erm](https://github.com/hrwatts/lean-erm) - This repository currently formalizes the deterministic core behind a standard ERM oracle inequality.
 
-*Last updated: 2026-06-28 00:34:49 UTC*
+*Last updated: 2026-06-29 00:36:30 UTC*
 <!-- END_SUMMARY -->
 
