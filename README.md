@@ -34,10 +34,10 @@ Research spans stochastic processes, dynamical systems, inference, and scientifi
 
 <!-- START_SUMMARY -->
 - Tracking public, non-fork repositories owned by `hrwatts` and `hrwdata`
-- Public repositories: 24
+- Public repositories: 26
 - Total stars and forks: 7 stars, 1 forks
 - Primary languages: HTML, Python, MATLAB
-- Recently updated: `hrwatts/python_automation`, `hrwatts/digital-harmony-studies`, `hrwatts/gem-lasso`
+- Recently updated: `hrwdata/git-commit-schedule`, `hrwdata/paper-translation-archive`, `hrwatts/python_automation`
 
 ### Featured Repositories
 - [hrwatts/gem-lasso](https://github.com/hrwatts/gem-lasso) - Python implementation of Gaussian mixture modeling with sparse component precision matrices and graph extraction
@@ -46,6 +46,6 @@ Research spans stochastic processes, dynamical systems, inference, and scientifi
 - [hrwatts/median-ci-power-ttest](https://github.com/hrwatts/median-ci-power-ttest) - Reproducible research companion for a statistical note on exact-coverage confidence intervals for the power of the one-sample Student t-test
 - [hrwatts/lean-erm](https://github.com/hrwatts/lean-erm) - This repository currently formalizes the deterministic core behind a standard ERM oracle inequality.
 
-*Last updated: 2026-07-06 00:30:55 UTC*
+*Last updated: 2026-07-07 00:31:30 UTC*
 <!-- END_SUMMARY -->
 
