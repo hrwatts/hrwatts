@@ -37,15 +37,15 @@ Research spans stochastic processes, dynamical systems, inference, and scientifi
 - Public repositories: 26
 - Total stars and forks: 7 stars, 1 forks
 - Primary languages: HTML, Python, MATLAB
-- Recently updated: `hrwdata/git-commit-schedule`, `hrwdata/paper-translation-archive`, `hrwatts/python_automation`
+- Recently updated: `hrwdata/git-commit-schedule`, `hrwdata/paper-forensics`, `hrwdata/paper-translation-archive`
 
 ### Featured Repositories
 - [hrwatts/gem-lasso](https://github.com/hrwatts/gem-lasso) - Python implementation of Gaussian mixture modeling with sparse component precision matrices and graph extraction
 - [hrwatts/or-algos](https://github.com/hrwatts/or-algos) - Python ports of optimization routines
+- [hrwdata/paper-forensics](https://github.com/hrwdata/paper-forensics) - TeX-first review application for academic document forensics
 - [hrwatts/digital-harmony-studies](https://github.com/hrwatts/digital-harmony-studies) - Creative-coding repository for John Whitney-inspired harmonic motion graphics
 - [hrwatts/median-ci-power-ttest](https://github.com/hrwatts/median-ci-power-ttest) - Reproducible research companion for a statistical note on exact-coverage confidence intervals for the power of the one-sample Student t-test
-- [hrwatts/lean-erm](https://github.com/hrwatts/lean-erm) - This repository currently formalizes the deterministic core behind a standard ERM oracle inequality.
 
-*Last updated: 2026-07-07 00:31:30 UTC*
+*Last updated: 2026-07-08 00:26:14 UTC*
 <!-- END_SUMMARY -->
 
