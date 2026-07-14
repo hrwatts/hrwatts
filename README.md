@@ -46,6 +46,6 @@ Research spans stochastic processes, dynamical systems, inference, and scientifi
 - [hrwatts/digital-harmony-studies](https://github.com/hrwatts/digital-harmony-studies) - Creative-coding repository for John Whitney-inspired harmonic motion graphics
 - [hrwatts/median-ci-power-ttest](https://github.com/hrwatts/median-ci-power-ttest) - Reproducible research companion for a statistical note on exact-coverage confidence intervals for the power of the one-sample Student t-test
 
-*Last updated: 2026-07-13 00:25:51 UTC*
+*Last updated: 2026-07-14 00:23:14 UTC*
 <!-- END_SUMMARY -->
 
