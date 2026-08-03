@@ -6,7 +6,7 @@
   "excluded_repositories": [
     "hrwatts"
   ],
-  "total_repositories": 27,
+  "total_repositories": 28,
   "total_stars": 7,
   "total_forks": 1,
   "repositories_by_research_area": {
@@ -14,7 +14,7 @@
     "dynamical": 4,
     "probability": 0,
     "computing": 2,
-    "finance": 0,
+    "finance": 1,
     "other": 21
   },
   "stars_by_research_area": {
@@ -35,17 +35,17 @@
       "bytes": 1190081
     },
     {
-      "name": "MATLAB",
-      "bytes": 72434
+      "name": "TypeScript",
+      "bytes": 201814
     },
     {
-      "name": "TypeScript",
-      "bytes": 71822
+      "name": "MATLAB",
+      "bytes": 72434
     },
     {
       "name": "Jupyter Notebook",
       "bytes": 66610
     }
   ],
-  "generated_at": "2026-08-02T00:27:32.287067Z"
+  "generated_at": "2026-08-03T00:27:28.117070Z"
 }
