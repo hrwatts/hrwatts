@@ -37,7 +37,7 @@ Research spans stochastic processes, dynamical systems, inference, and scientifi
 - Public repositories: 28
 - Total stars and forks: 7 stars, 1 forks
 - Primary languages: HTML, Python, TypeScript
-- Recently updated: `hrwatts/repository-steward`, `hrwdata/paper-forensics`, `hrwatts/python_automation`
+- Recently updated: `hrwatts/python_automation`, `hrwatts/repository-steward`, `hrwdata/paper-forensics`
 
 ### Featured Repositories
 - [hrwatts/gem-lasso](https://github.com/hrwatts/gem-lasso) - Python implementation of Gaussian mixture modeling with sparse component precision matrices and graph extraction
@@ -46,6 +46,6 @@ Research spans stochastic processes, dynamical systems, inference, and scientifi
 - [hrwdata/paper-forensics](https://github.com/hrwdata/paper-forensics) - TeX-first review application for academic document forensics
 - [hrwatts/digital-harmony-studies](https://github.com/hrwatts/digital-harmony-studies) - Creative-coding repository for John Whitney-inspired harmonic motion graphics
 
-*Last updated: 2026-08-03 00:27:28 UTC*
+*Last updated: 2026-08-04 00:27:02 UTC*
 <!-- END_SUMMARY -->
 
